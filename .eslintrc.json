@@ -19,6 +19,7 @@
         "quotes": ["error", "single"],
         "jsx-quotes": ["error", "prefer-single"],
         "@typescript-eslint/explicit-function-return-type": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-misused-promises": "off"
     }
 }
