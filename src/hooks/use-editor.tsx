@@ -46,7 +46,7 @@ export const useEditor = (language: string) => {
         language, code
       )
       updateCurrentOutput(output)
-    }, 1000) as unknown as number)
+    }, 500) as unknown as number)
   }
 
   return {

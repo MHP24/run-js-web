@@ -1,8 +1,9 @@
 'use client'
 
+import { EditorContext } from '@/context'
 import { useEditor } from '@/hooks'
 import MonacoEditor from '@monaco-editor/react'
-import { type FC } from 'react'
+import { useContext, type FC } from 'react'
 
 interface Props {
   height?: string | number
@@ -11,6 +12,7 @@ interface Props {
 export const Editor: FC<Props> = ({ height = '100%' }) => {
   // * Custom hook to handle editor states
   const { handleEditor, onChange } = useEditor('javascript')
+  const { code } = useContext(EditorContext)
 
   return (
     <div className='p-4 pl-0 overflow-hid den'>
@@ -19,9 +21,10 @@ export const Editor: FC<Props> = ({ height = '100%' }) => {
         theme='vs-dark'
         language='javascript'
         onMount={handleEditor}
+        value={code}
         onChange={async () => { await onChange() }}
         options={{
-          fontSize: 18,
+          fontSize: 17,
           lineHeight: 1.4,
           fontLigatures: true,
           renderLineHighlight: 'none',
