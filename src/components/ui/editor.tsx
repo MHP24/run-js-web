@@ -13,7 +13,7 @@ export const Editor: FC<Props> = ({ height = '100%' }) => {
   const { handleEditor, onChange } = useEditor('javascript')
 
   return (
-    <div className='p-4 overflow-hidden'>
+    <div className='p-4 overflow-hid den'>
       <MonacoEditor
         height={height}
         theme='vs-dark'

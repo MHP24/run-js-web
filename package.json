@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start:dev": "next dev --turbo",
+    "start:dev": "next dev",
     "start:prod": "next start",
     "build": "next build",
     "lint": "eslint -- --init"
@@ -13,7 +13,8 @@
     "monaco-editor": "^0.45.0",
     "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "vm2": "3.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",

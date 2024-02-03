@@ -1,6 +1,6 @@
 'use client'
 
-// import { runCode } from '@/actions'
+import { runCode } from '@/actions'
 import { type editor } from 'monaco-editor'
 import { useEffect, useRef, useState } from 'react'
 
@@ -29,8 +29,8 @@ export const useEditor = (language: string) => {
       clearTimeout(debounce)
     }
 
-    setDebounce(setTimeout(() => {
-      console.log({ code: editorRef.current?.getValue(), language })
+    setDebounce(setTimeout(async () => {
+      await runCode(language, `${editorRef.current?.getValue()}`)
     }, 1000) as unknown as number)
   }
 
