@@ -15,6 +15,5 @@ export const post = async <T>(
     },
     body: JSON.stringify(body)
   })
-
   return await request.json()
 }

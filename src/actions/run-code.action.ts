@@ -1,15 +1,20 @@
 'use server'
 
 import { httpAdapter } from '@/adapters'
+import { type Execution } from '@/types'
 
 export const runCode = async (
   language: string, code: string
-): Promise<any> => {
+): Promise<string> => {
   // * Execution from docker container web service
-  const output = await httpAdapter.post({
+  const runProcess = await httpAdapter.post<Execution>({
     url: `${process.env.API_COMPILER_BASE_URL}/compilers/run`,
     body: { language, code }
   })
 
-  console.log({ output })
+  return (
+    runProcess.execution === 'success'
+      ? runProcess.output
+      : runProcess.error
+  )
 }

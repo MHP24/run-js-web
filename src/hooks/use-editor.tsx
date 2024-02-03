@@ -1,12 +1,19 @@
 'use client'
 
 import { runCode } from '@/actions'
+import { EditorContext } from '@/context'
 import { type editor } from 'monaco-editor'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 export const useEditor = (language: string) => {
   // * Debounce used on change
   const [debounce, setDebounce] = useState<number | null>(null)
+  // * Context handler
+  const {
+    updateCurrentCode,
+    updateCurrentOutput,
+    code
+  } = useContext(EditorContext)
 
   // * References related to monaco editor
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null)
@@ -29,12 +36,21 @@ export const useEditor = (language: string) => {
       clearTimeout(debounce)
     }
 
+    // * Code update and store in cookies
+    const code = `${editorRef.current?.getValue()}`
+    updateCurrentCode(code)
+
+    // * Debounce for execution
     setDebounce(setTimeout(async () => {
-      await runCode(language, `${editorRef.current?.getValue()}`)
+      const output = await runCode(
+        language, code
+      )
+      updateCurrentOutput(output)
     }, 1000) as unknown as number)
   }
 
   return {
+    code,
     handleEditor,
     onChange
   }
