@@ -1,5 +1,3 @@
-import React from 'react'
-
 const NotFoundPage = () => {
   return (
     <div className='h-screen w-full grid place-items-center'>
