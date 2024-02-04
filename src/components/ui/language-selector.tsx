@@ -9,7 +9,7 @@ export const LanguageSelector = () => {
   const { updateCurrentLanguage, language } = useContext(EditorContext)
 
   return (
-    <div className='flex gap-3'>
+    <div className=''>
       {
         supportedLanguages.map(({ name, label }) => (
           <Button

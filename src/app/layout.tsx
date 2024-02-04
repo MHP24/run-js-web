@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { EditorProvider } from '@/context'
-
-const inter = Inter({ subsets: ['latin'] })
+import { mainFont } from '@/fonts'
 
 export const metadata: Metadata = {
   title: 'Run js web',
@@ -18,7 +16,7 @@ export default function RootLayout ({
   return (
     <EditorProvider>
       <html lang='en'>
-        <body className={`${inter.className} bg-c1 text-c3`}>
+        <body className={`${mainFont.className} bg-c1 text-c3`}>
           {children}
         </body>
       </html>
