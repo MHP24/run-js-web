@@ -1,5 +1,6 @@
 'use client'
 
+import { editorBaseOptions } from '@/constants/editor-options'
 import { EditorContext } from '@/context'
 import { useEditor } from '@/hooks'
 import MonacoEditor from '@monaco-editor/react'
@@ -11,30 +12,25 @@ interface Props {
 
 export const Editor: FC<Props> = ({ height = '100%' }) => {
   // * Custom hook to handle editor states
-  const { handleEditor, onChange } = useEditor('javascript')
-  const { code } = useContext(EditorContext)
+  const { code, language } = useContext(EditorContext)
+  const { handleEditor, onChange } = useEditor(language)
 
   return (
     <div className='overflow-hidden'>
       <MonacoEditor
         height={height}
         theme='vs-dark'
-        language='javascript'
+        language={language}
         onMount={handleEditor}
         value={code}
         onChange={async () => { await onChange() }}
         options={{
-          fontSize: 17,
-          lineHeight: 1.4,
-          fontLigatures: true,
-          renderLineHighlight: 'none',
+          ...editorBaseOptions,
           lineNumbers: 'on',
-          minimap: { enabled: false },
-          padding: { top: 10, bottom: 0 },
-          overviewRulerLanes: 0,
+          renderLineHighlight: 'none',
           scrollbar: {
             vertical: 'hidden',
-            horizontal: 'hidden',
+            horizontal: undefined,
             useShadows: false
           }
         }}

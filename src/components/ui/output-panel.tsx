@@ -4,6 +4,7 @@ import React, { type FC, useContext } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { EditorContext } from '@/context'
 import { formatCode } from '@/helpers'
+import { editorBaseOptions } from '@/constants/editor-options'
 
 interface Props {
   height?: string | number
@@ -20,15 +21,11 @@ export const OutputPanel: FC<Props> = ({ height = '100%' }) => {
         language='javascript'
         value={formatCode(output)}
         options={{
-          fontSize: 17,
-          lineHeight: 1.4,
-          fontLigatures: true,
+          ...editorBaseOptions,
           renderLineHighlight: 'none',
           lineNumbers: 'off',
           readOnly: true,
-          minimap: { enabled: false },
           padding: { top: 0, bottom: 0 },
-          overviewRulerLanes: 0,
           scrollbar: {
             vertical: 'hidden',
             horizontal: 'hidden',

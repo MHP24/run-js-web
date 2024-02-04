@@ -5,7 +5,7 @@ import { type Execution } from '@/types'
 
 export const runCode = async (
   language: string, code: string
-): Promise<string> => {
+): Promise<Array<unknown | string>> => {
   // * Execution from docker container web service
   const runProcess = await httpAdapter.post<Execution>({
     url: `${process.env.API_COMPILER_BASE_URL}/compilers/run`,
@@ -15,6 +15,6 @@ export const runCode = async (
   return (
     runProcess.execution === 'success'
       ? runProcess.outputs
-      : runProcess.error
+      : [runProcess.error]
   )
 }
