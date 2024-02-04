@@ -13,6 +13,8 @@ FROM base as build
 WORKDIR /app
 COPY . . 
 COPY --from=deps /app/node_modules ./node_modules
+ARG NEXT_PUBLIC_URL
+ENV NEXT_PUBLIC_URL=$NEXT_PUBLIC_URL
 RUN yarn build
 
 
