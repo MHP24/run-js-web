@@ -2,7 +2,7 @@ export type Execution = ExecutionSuccessfully | ExecutionFailed
 
 export type ExecutionSuccessfully = {
   execution: 'success'
-  output: string
+  outputs: string
 }
 
 export type ExecutionFailed = {

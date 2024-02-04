@@ -18,7 +18,7 @@ export default function RootLayout ({
   return (
     <EditorProvider>
       <html lang='en'>
-        <body className={`${inter.className} bg-c1`}>
+        <body className={`${inter.className} bg-c1 text-c3`}>
           {children}
         </body>
       </html>

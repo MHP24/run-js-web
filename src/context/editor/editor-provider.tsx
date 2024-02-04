@@ -9,7 +9,7 @@ import cookies from 'js-cookie'
 const INITIAL_STATE: EditorState = {
   code: '',
   language: 'javascript',
-  output: ''
+  output: []
 }
 
 export const EditorProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -20,9 +20,9 @@ export const EditorProvider: FC<PropsWithChildren> = ({ children }) => {
     if (code) updateCurrentCode(code)
   }, [])
 
-  const updateCurrentOutput = (output: any) => {
+  const updateCurrentOutput = (output: unknown[]) => {
     // cookies.set('output', output)
-    dispatch({ type: '[update] - output', payload: JSON.stringify(output, null, 2) })
+    dispatch({ type: '[update] - output', payload: output })
   }
 
   const updateCurrentLanguage = (language: string) => {

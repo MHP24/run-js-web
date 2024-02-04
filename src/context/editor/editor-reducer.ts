@@ -7,7 +7,7 @@ type Action =
 } |
 {
   type: '[update] - output'
-  payload: string
+  payload: unknown[]
 } |
 {
   type: '[update] - language'

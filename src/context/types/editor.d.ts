@@ -1,11 +1,11 @@
 export type EditorState = {
   code: string
   language: string
-  output: string
+  output: unknown[]
 }
 
 export type TEditorContext = {
-  updateCurrentOutput: (data: string) => void
+  updateCurrentOutput: (data: unknown[]) => void
   updateCurrentLanguage: (data: string) => void
   updateCurrentCode: (data: string) => void
 } & EditorState

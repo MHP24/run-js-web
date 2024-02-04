@@ -15,7 +15,7 @@ export const Editor: FC<Props> = ({ height = '100%' }) => {
   const { code } = useContext(EditorContext)
 
   return (
-    <div className='p-4 pl-0 overflow-hid den'>
+    <div className='overflow-hidden'>
       <MonacoEditor
         height={height}
         theme='vs-dark'
@@ -29,7 +29,14 @@ export const Editor: FC<Props> = ({ height = '100%' }) => {
           fontLigatures: true,
           renderLineHighlight: 'none',
           lineNumbers: 'on',
-          minimap: { enabled: false }
+          minimap: { enabled: false },
+          padding: { top: 10, bottom: 0 },
+          overviewRulerLanes: 0,
+          scrollbar: {
+            vertical: 'hidden',
+            horizontal: 'hidden',
+            useShadows: false
+          }
         }}
       />
     </div>

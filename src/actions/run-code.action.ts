@@ -14,7 +14,7 @@ export const runCode = async (
 
   return (
     runProcess.execution === 'success'
-      ? runProcess.output
+      ? runProcess.outputs
       : runProcess.error
   )
 }
