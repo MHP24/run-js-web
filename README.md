@@ -1,5 +1,8 @@
 
-# Next.js 14 Project
+# Run js web
+<p align="center">
+  <img src="./public/logo.png" width="150" alt="javascript and typescript" />
+</p>
 
 This is a Next.js version 14 project that requires [Node.js 18 or higher](https://nodejs.org/en). The project has two start scripts: __yarn start:dev__ to run in development mode and __yarn start:prod__ to run in production mode.
 
