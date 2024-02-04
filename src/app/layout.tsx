@@ -4,7 +4,6 @@ import { EditorProvider } from '@/context'
 import { mainFont } from '@/fonts'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL ?? ''),
   title: 'Run js web',
   description: 'Test and write your own JavaScript code in real time (TypeScript supported!)',
   alternates: {
