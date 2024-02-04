@@ -5,7 +5,17 @@ import { mainFont } from '@/fonts'
 
 export const metadata: Metadata = {
   title: 'Run js web',
-  description: 'Test and write your own javascript code in real time'
+  description: 'Test and write your own JavaScript code in real time (TypeScript supported!)',
+  openGraph: {
+    title: 'Run js web',
+    description: 'Test and write your own JavaScript code in real time (TypeScript supported!)',
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_URL}/logo.png`,
+        alt: 'Run js web'
+      }
+    ]
+  }
 }
 
 export default function RootLayout ({
