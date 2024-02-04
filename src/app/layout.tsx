@@ -4,17 +4,30 @@ import { EditorProvider } from '@/context'
 import { mainFont } from '@/fonts'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL ?? ''),
   title: 'Run js web',
   description: 'Test and write your own JavaScript code in real time (TypeScript supported!)',
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US'
+    }
+  },
   openGraph: {
     title: 'Run js web',
     description: 'Test and write your own JavaScript code in real time (TypeScript supported!)',
+    url: process.env.NEXT_PUBLIC_URL,
+    siteName: 'Run js web',
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_URL}/logo.png`,
+        url: `${process.env.NEXT_PUBLIC_URL ?? ''}/logo.png`,
+        width: 800,
+        height: 600,
         alt: 'Run js web'
       }
-    ]
+    ],
+    locale: 'en_US',
+    type: 'website'
   }
 }
 
