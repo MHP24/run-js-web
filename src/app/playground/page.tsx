@@ -1,4 +1,11 @@
-import { Editor, FileUploader, LanguageSelector, Logo, OutputPanel } from '@/components'
+import {
+  Editor,
+  FileUploader,
+  Icon,
+  LanguageSelector,
+  Logo,
+  OutputPanel
+} from '@/components'
 
 export default function Playground () {
   return (
@@ -16,7 +23,10 @@ export default function Playground () {
       </div>
       <div className='col-span-2 border-[1px] border-c2'>
         <div className='h-16 flex gap-3 items-center p-4 border-y-[1px] border-c2'>
-          <h3 className='select-none'>Output</h3>
+          <div className='flex flex-1 justify-end items-center gap-2'>
+            <h3 className='select-none text-md'>Output</h3>
+            <Icon icon='console'/>
+          </div>
         </div>
         <OutputPanel height='calc(100vh - 20px)'/>
       </div>

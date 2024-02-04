@@ -1,6 +1,7 @@
 'use client'
 
 import { useUpload } from '@/hooks'
+import { Icon } from '..'
 
 export const FileUploader = () => {
   const { onUpload } = useUpload()
@@ -8,7 +9,10 @@ export const FileUploader = () => {
   return (
     <label htmlFor='file-upload' className='border-[1px] border-c2
       hover:cursor-pointer py-2 px-6 text-sm rounded-md'>
-      <p>{'Upload your file (.ts .js supported)'}</p>
+      <div className='flex gap-2 items-center'>
+        <p>Import file</p>
+        <Icon icon='file'/>
+      </div>
       <input
         id='file-upload'
         onChange={onUpload}
