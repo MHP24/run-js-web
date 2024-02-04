@@ -15,11 +15,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Run js web',
     description: 'Test and write your own JavaScript code in real time (TypeScript supported!)',
-    url: process.env.NEXT_PUBLIC_URL,
     siteName: 'Run js web',
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_URL ?? ''}/logo.png`,
+        url: 'logo.png',
         width: 800,
         height: 600,
         alt: 'Run js web'
