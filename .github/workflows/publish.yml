@@ -21,7 +21,7 @@ jobs:
         
       - name: Build the Docker image
         run: |
-          docker build . --tag ${{ secrets.DOCKER_PRODUCTION_IMAGE }}
+          docker build --build-arg NEXT_PUBLIC_URL=${{ secrets.NEXT_PUBLIC_URL }} . --tag ${{ secrets.DOCKER_PRODUCTION_IMAGE }}
           docker push ${{ secrets.DOCKER_PRODUCTION_IMAGE }}  
 
   deploy:

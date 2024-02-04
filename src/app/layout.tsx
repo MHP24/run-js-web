@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: 'Run js web',
     images: [
       {
-        url: 'logo.png',
+        url: `${process.env.NEXT_PUBLIC_URL}/logo.png`,
         width: 800,
         height: 600,
         alt: 'Run js web'
