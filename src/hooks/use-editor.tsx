@@ -1,6 +1,5 @@
 'use client'
 
-import { runCode } from '@/actions'
 import { EditorContext } from '@/context'
 import { type editor } from 'monaco-editor'
 import { useContext, useEffect, useRef, useState } from 'react'
@@ -11,7 +10,7 @@ export const useEditor = (language: string) => {
   // * Context handler
   const {
     updateCurrentCode,
-    updateCurrentOutput,
+    executeCode,
     code
   } = useContext(EditorContext)
 
@@ -42,10 +41,7 @@ export const useEditor = (language: string) => {
 
     // * Debounce for execution
     setDebounce(setTimeout(async () => {
-      const output = await runCode(
-        language, code
-      )
-      updateCurrentOutput(output)
+      await executeCode(language, code)
     }, 500) as unknown as number)
   }
 

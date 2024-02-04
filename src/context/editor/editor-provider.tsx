@@ -4,7 +4,7 @@ import React, { useReducer, type FC, type PropsWithChildren, useEffect } from 'r
 import { type EditorState } from '../types'
 import { EditorContext } from './editor-context'
 import { editorReducer } from './editor-reducer'
-import cookies from 'js-cookie'
+import { runCode } from '@/actions'
 
 const INITIAL_STATE: EditorState = {
   code: '',
@@ -18,32 +18,39 @@ export const EditorProvider: FC<PropsWithChildren> = ({ children }) => {
   // * Loader for latest information (language, code and output)
   useEffect(() => {
     // * Code
-    const code = cookies.get('code')
+    const code = localStorage.getItem('code')
     if (code) updateCurrentCode(code)
 
     // * Language
-    const language = cookies.get('language')
+    const language = localStorage.getItem('language')
     if (language) updateCurrentLanguage(language)
 
     // * Latest output obtained
-    const output = cookies.get('output')
+    const output = localStorage.getItem('output')
     if (code && output) updateCurrentOutput(JSON.parse(output) as unknown[])
   }, [])
 
   // * Global functions provided...
   const updateCurrentOutput = (output: unknown[]) => {
-    cookies.set('output', JSON.stringify(output))
+    localStorage.setItem('output', JSON.stringify(output))
     dispatch({ type: '[update] - output', payload: output })
   }
 
   const updateCurrentLanguage = (language: string) => {
-    cookies.set('language', language)
+    localStorage.setItem('language', language)
     dispatch({ type: '[update] - language', payload: language })
   }
 
   const updateCurrentCode = (code: string) => {
-    cookies.set('code', code)
+    localStorage.setItem('code', code)
     dispatch({ type: '[update] - code', payload: code })
+  }
+
+  const executeCode = async (language: string, code: string) => {
+    const output = await runCode(
+      language, code
+    )
+    updateCurrentOutput(output)
   }
 
   return (
@@ -51,7 +58,8 @@ export const EditorProvider: FC<PropsWithChildren> = ({ children }) => {
       ...state,
       updateCurrentLanguage,
       updateCurrentOutput,
-      updateCurrentCode
+      updateCurrentCode,
+      executeCode
     }}>
       {children}
     </EditorContext.Provider>

@@ -1,4 +1,4 @@
-import { Editor, LanguageSelector, Logo, OutputPanel } from '@/components'
+import { Editor, FileUploader, LanguageSelector, Logo, OutputPanel } from '@/components'
 
 export default function Playground () {
   return (
@@ -7,8 +7,8 @@ export default function Playground () {
         <div className='h-16 flex gap-3 items-center px-4 border-y-[1px] border-c2'>
           <Logo/>
           <LanguageSelector/>
-          <div className='flex-1 text-right'>
-            <h3>Upload a file</h3>
+          <div className='flex flex-1 justify-end'>
+            <FileUploader/>
           </div>
         </div>
 
