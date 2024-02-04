@@ -1,10 +1,9 @@
 'use client'
 
 import { editorBaseOptions } from '@/constants/editor-options'
-import { EditorContext } from '@/context'
-import { useEditor } from '@/hooks'
+import { useEditor, useMonaco } from '@/hooks'
 import MonacoEditor from '@monaco-editor/react'
-import { useContext, type FC } from 'react'
+import { type FC } from 'react'
 
 interface Props {
   height?: string | number
@@ -12,8 +11,8 @@ interface Props {
 
 export const Editor: FC<Props> = ({ height = '100%' }) => {
   // * Custom hook to handle editor states
-  const { code, language } = useContext(EditorContext)
-  const { handleEditor, onChange } = useEditor(language)
+  const { code, language } = useEditor()
+  const { handleEditor, onChange } = useMonaco(language)
 
   return (
     <div className='overflow-hidden'>

@@ -1,12 +1,11 @@
 'use client'
 
-import { useContext } from 'react'
 import { Button } from '..'
-import { EditorContext } from '@/context'
 import { supportedLanguages } from '@/constants/supported-languages'
+import { useEditor } from '@/hooks'
 
 export const LanguageSelector = () => {
-  const { updateCurrentLanguage, language } = useContext(EditorContext)
+  const { updateCurrentLanguage, language } = useEditor()
 
   return (
     <div className='flex'>

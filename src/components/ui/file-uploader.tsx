@@ -1,6 +1,6 @@
 'use client'
 
-import { useUpload } from '@/hooks/use-upload'
+import { useUpload } from '@/hooks'
 
 export const FileUploader = () => {
   const { onUpload } = useUpload()

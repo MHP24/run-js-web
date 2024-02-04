@@ -1,6 +1,6 @@
 import { extensionLanguages } from '@/constants/extension-languages'
-import { EditorContext } from '@/context'
-import { useContext, type ChangeEvent } from 'react'
+import { type ChangeEvent } from 'react'
+import { useEditor } from '.'
 
 export const useUpload = () => {
   // ! This hook requires EditorContext functionalities (high dependency)
@@ -8,7 +8,7 @@ export const useUpload = () => {
     updateCurrentLanguage,
     updateCurrentCode,
     executeCode
-  } = useContext(EditorContext)
+  } = useEditor()
 
   const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
     // * File checking..

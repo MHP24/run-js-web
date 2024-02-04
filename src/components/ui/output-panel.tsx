@@ -1,17 +1,17 @@
 'use client'
 
-import React, { type FC, useContext } from 'react'
+import React, { type FC } from 'react'
 import MonacoEditor from '@monaco-editor/react'
-import { EditorContext } from '@/context'
 import { formatCode } from '@/helpers'
 import { editorBaseOptions } from '@/constants/editor-options'
+import { useEditor } from '@/hooks'
 
 interface Props {
   height?: string | number
 }
 
 export const OutputPanel: FC<Props> = ({ height = '100%' }) => {
-  const { output } = useContext(EditorContext)
+  const { output } = useEditor()
 
   return (
     <div className='py-2 max-h-full'>

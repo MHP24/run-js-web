@@ -1,10 +1,10 @@
 'use client'
 
-import { EditorContext } from '@/context'
 import { type editor } from 'monaco-editor'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useEditor } from '.'
 
-export const useEditor = (language: string) => {
+export const useMonaco = (language: string) => {
   // * Debounce used on change
   const [debounce, setDebounce] = useState<number | null>(null)
   // * Context handler
@@ -12,7 +12,7 @@ export const useEditor = (language: string) => {
     updateCurrentCode,
     executeCode,
     code
-  } = useContext(EditorContext)
+  } = useEditor()
 
   // * References related to monaco editor
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null)
