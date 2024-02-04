@@ -15,13 +15,24 @@ const INITIAL_STATE: EditorState = {
 export const EditorProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(editorReducer, INITIAL_STATE)
 
+  // * Loader for latest information (language, code and output)
   useEffect(() => {
-    const code: string | undefined = cookies.get('code')
+    // * Code
+    const code = cookies.get('code')
     if (code) updateCurrentCode(code)
+
+    // * Language
+    const language = cookies.get('language')
+    if (language) updateCurrentLanguage(language)
+
+    // * Latest output obtained
+    const output = cookies.get('output')
+    if (code && output) updateCurrentOutput(JSON.parse(output) as unknown[])
   }, [])
 
+  // * Global functions provided...
   const updateCurrentOutput = (output: unknown[]) => {
-    // cookies.set('output', output)
+    cookies.set('output', JSON.stringify(output))
     dispatch({ type: '[update] - output', payload: output })
   }
 
